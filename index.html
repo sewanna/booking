@@ -1,0 +1,118 @@
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <style>
+ .pasazer ul li {
+    list-style: none;
+    padding:20px;
+    border:1px solid #666;
+    text-decoration:none;
+}
+
+.pasazer ul li a{text-decoration:none}
+
+#to1{padding:15px;
+font-size:0.8em;
+}  
+    </style>
+<script type="text/javascript">
+var min = 3; //zmienna minuty
+var sec=0; //zmienna sekundy
+function time() {
+ 
+   if(sec > 0) {
+       sec--;
+   } else {
+       if(min > 0) {
+           min--;
+           sec = 59;
+       }
+       if(min==0 && sec==0) { //obie wartości mają wynosić zero
+           location.href="odliczanie.html"; //location.href przekierowuje pod adres
+       }
+   }
+ 
+   document.getElementById('sesja').innerHTML=((min < 3) ? "0" + min : min)+":"+((sec < 10) ? "0" + sec : sec);
+ 
+   setTimeout("time();", 1000);// jedna sekunda to 1000 milisekund
+}
+</script>
+</head>
+<body onload="time()">
+
+<div><script type="text/javascript">document.write("Sesja kończy się za: ")</script>
+    <span id="sesja"></span>
+</div>
+<div>	<form method="GET"><p>OD 
+    <select type="text" value="" name="Subject" id="from1" onchange="myFunction()"> 
+        <option>Warszawa</option> 
+        <option>Londyn</option> 
+        <option>Berlin</option> 
+        <option>Paryż</option> 
+        <option>Wiedeń</option> 
+    </select>
+    DO 
+        <select type="text" value="" name="Subject" id="to1" onchange="myFunction()"> 
+            <option>Warszawa</option> 
+            <option>Londyn</option> 
+            <option>Berlin</option> 
+            <option>Paryż</option> 
+            <option>Wiedeń</option> 
+        </select></p>
+
+        Data wylotu: <input type ="date"> Data powrotu: <input type ="date"><br>
+
+       Klasa: 
+       <input type="radio" id="economic" name ="class" value="economic"><label for="economic"> ekonomiczna </label>
+       <input type="radio" id="business" name="class" value="business"><label for ="business">businness</label>
+<!----żeby była opcja wyboru tylko jednego radio name muszą być te same name-->
+
+
+
+
+       <p>Opcjonalnie
+        <input type="checkbox" id="bagaz" name="optional" value="bagaz"> <label for="bagaz">Dodatkowy bagaż</label>
+  
+        <input type="checkbox" id="animal" name="optional" value="animal"> <label for="animal">Zwierzę do 3 kg</label>
+    
+        <input type="checkbox" id="animalbig" name="optional" value="animalbig"> <label for="animalbig">Zwierzę pow. 3 kg</label>
+        </p>
+
+        <input type="hidden" id="passengers">
+        <a href="#" class="passenger"><span>1 pasażer</span></a>
+    </div>
+
+
+<div class="pasazer">
+    <ul>
+        <li><a href="#">Pasazerowie</a></li>
+        <div class="pasazer-sub">
+            <ul>
+            <li>1 pasażer</li>
+            <li>1 dziecko (do 3 lat)</li>
+            <li> dziecko (pow 3 lat)</li>
+            <li>nastolatek (15-18 lat)</li>
+            </ul>
+        </div>
+    </ul>
+
+</div>
+            <!--<select type="text" value="" name="Subject" id="to1" onchange="myFunction()">
+            <option>Warszawa
+                <option>Warszawa</option> 
+
+            </option> 
+            <option>Londyn</option> 
+            <option>Berlin</option> 
+            <option>Paryż</option> 
+            <option>Wiedeń</option> 
+        </select></p>
+    </li>
+    </ul> -->
+      </div>
+ 
+</form>
+</div>
+</body>
+</html>
